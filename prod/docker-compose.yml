@@ -17,7 +17,7 @@ services:
       - "9300:9300"
     environment:
       - node.name=node-232                   # 节点名称，集群模式下每个节点名称唯一
-      - network.publish_host=192.168.0.13  	# 用于集群内各机器间通信,其他机器访问本机器的es服务
+      - network.publish_host=192.168.0.13  # 用于集群内各机器间通信,其他机器访问本机器的es服务
       - network.host=0.0.0.0                # 设置绑定的ip地址，可以是ipv4或ipv6的，默认为0.0.0.0，
       - discovery.seed_hosts=192.168.0.13,192.168.0.12,192.168.0.11          # es7.x 之后新增的配置，写入候选主节点的设备地址，在开启服务后可以被选为主节点
       - cluster.initial_master_nodes=192.168.0.13,192.168.0.12,192.168.0.11  # es7.x 之后新增的配置，初始化一个新的集群时需要此配置来选举master
