@@ -13,3 +13,6 @@ https://www.cnblogs.com/lz0925/p/12023521.html
 
 5.指定docker-compose文件部署
 docker logs -f jaegerCollector
+
+5.指定docker-compose文件部署
+docker logs -f jaegerCollector
