@@ -24,7 +24,7 @@ services:
     network_mode: bridge
     environment:
       - SPAN_STORAGE_TYPE=elasticsearch
-      - ES_SERVER_URLS=http:/192.168.0.13:9200,http:/192.168.0.12:9200,http:/192.168.0.11:9200
+      - ES_SERVER_URLS=http:/192.168.0.13:9200
       - ES_USERNAME=elastic
       - LOG_LEVEL=ERROR
       - es.version=7

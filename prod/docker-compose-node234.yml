@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   elasticsearch:
-    image: elasticsearch:7.9.0
+    image: 47.106.255.31:55000/ins/elasticsearch:7.9.0
     container_name: 'es'
     volumes:
 #      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
@@ -12,10 +12,10 @@ services:
       - "9300:9300"
     environment:
       - node.name=node-234                   # 节点名称，集群模式下每个节点名称唯一
-      - network.publish_host=192.168.0.11  # 用于集群内各机器间通信,其他机器访问本机器的es服务
+      - network.publish_host=10.0.0.234  # 用于集群内各机器间通信,其他机器访问本机器的es服务
       - network.host=0.0.0.0                # 设置绑定的ip地址，可以是ipv4或ipv6的，默认为0.0.0.0，
-      - discovery.seed_hosts=192.168.0.13,192.168.0.12,192.168.0.11          # es7.x 之后新增的配置，写入候选主节点的设备地址，在开启服务后可以被选为主节点
-      - cluster.initial_master_nodes=192.168.0.13,192.168.0.12,192.168.0.11  # es7.x 之后新增的配置，初始化一个新的集群时需要此配置来选举master
+      - discovery.seed_hosts=10.0.0.232,10.0.0.233,10.0.0.234           # es7.x 之后新增的配置，写入候选主节点的设备地址，在开启服务后可以被选为主节点
+      - cluster.initial_master_nodes=10.0.0.232,10.0.0.233,10.0.0.234   # es7.x 之后新增的配置，初始化一个新的集群时需要此配置来选举master
       - cluster.name=es-cluster     # 集群名称，相同名称为一个集群
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g -Duser.timezone=GMT+08"# 设置内存
     networks:
