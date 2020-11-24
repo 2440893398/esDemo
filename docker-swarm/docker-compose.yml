@@ -7,7 +7,7 @@ services:
       - 8088:80
     deploy:
       mode: replicated
-      replicas: 4
+      replicas: 7
 
   visualizer:
     image: dockersamples/visualizer:latest
