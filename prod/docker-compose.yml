@@ -5,7 +5,7 @@ services:
     image: elasticsearch:7.9.0
     container_name: 'es'
     volumes:
-      - ./elasticsearch/config:/usr/share/elasticsearch/config
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - /home/ins/jaeger/data/es:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"

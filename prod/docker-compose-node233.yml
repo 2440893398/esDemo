@@ -6,7 +6,7 @@ services:
     container_name: 'es'
     volumes:
       volumes:
-        - ./elasticsearch/config:/usr/share/elasticsearch/config
+        - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
         - /home/ins/jaeger/data/es:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
