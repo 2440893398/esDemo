@@ -1,0 +1,10 @@
+1.删除原始es日志文件
+
+2.es文件存放位置需要被授权
+chmod -R 777 [目录]
+
+3.es部署常见问题
+https://blog.csdn.net/fly_wt/article/details/82986504
+
+4.部署参考链接
+https://www.cnblogs.com/lz0925/p/12023521.html

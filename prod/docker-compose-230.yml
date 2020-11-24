@@ -1,0 +1,35 @@
+version: '3.5'
+services:
+
+  collector:
+    image: jaegertracing/jaeger-collector
+    container_name: 'jaegerCollector'
+    network_mode: bridge
+    environment:
+      - SPAN_STORAGE_TYPE=elasticsearch
+      - ES_SERVER_URLS=http://10.0.0.232:9200
+      - ES_USERNAME=elastic
+      - LOG_LEVEL=ERROR
+      - es.version=7
+    ports:
+      - "14268:14268"
+      - "14267:14267"
+      - "10.0.0.230:14250:14250"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+  query:
+    image: jaegertracing/jaeger-query
+    container_name: 'jaegerQuery'
+    network_mode: bridge
+    environment:
+      - SPAN_STORAGE_TYPE=elasticsearch
+      - ES_SERVER_URLS=http://10.0.0.232:9200
+      - ES_USERNAME=elastic
+      - LOG_LEVEL=ERROR
+      - es.version=7
+    ports:
+      - 16686:16686
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
