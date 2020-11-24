@@ -2,7 +2,7 @@ version: "3"
 
 services:
   nginx:
-    image: 192.168.99.1:5000/nginx:latest
+    image: nginx:latest
     ports:
       - 8088:80
     deploy:
@@ -10,7 +10,7 @@ services:
       replicas: 4
 
   visualizer:
-    image: 192.168.99.1:5000/dockersamples/visualizer:latest
+    image: dockersamples/visualizer:latest
     ports:
       - "8080:8080"
     volumes:
@@ -21,7 +21,7 @@ services:
         constraints: [node.role == manager]
 
   portainer:
-    image: 192.168.99.1:5000/portainer/portainer:latest
+    image: portainer/portainer:latest
     ports:
       - "9000:9000"
     volumes:
