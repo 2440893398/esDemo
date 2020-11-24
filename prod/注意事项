@@ -1,7 +1,9 @@
 1.删除原始es日志文件
+rm -rf /home/ins/jaeger/data/es
+mkdir -p /home/ins/jaeger/data/es
 
 2.es文件存放位置需要被授权
-chmod -R 777 [目录]
+chmod -R 777 /home/ins/jaeger/data/es
 
 3.es部署常见问题
 https://blog.csdn.net/fly_wt/article/details/82986504
