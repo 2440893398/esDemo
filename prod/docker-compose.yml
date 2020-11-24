@@ -5,13 +5,8 @@ services:
     image: elasticsearch:7.9.0
     container_name: 'es'
     volumes:
-      - type: bind
-        source: ./elasticsearch/config/elasticsearch.yml
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
-        read_only: true
-      - type: volume
-        source: /home/ins/jaeger/data/es
-        target: /usr/share/elasticsearch/data
+      - ./elasticsearch/config:/usr/share/elasticsearch/config
+      - /home/ins/jaeger/data/es:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
