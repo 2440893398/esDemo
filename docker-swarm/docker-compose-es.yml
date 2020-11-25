@@ -2,6 +2,7 @@ version: '3'
 services:
   elasticsearch1:
     container_name: 'es1'
+    hostname: es1
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       # publish_host 如果不写成hostname，会用错网卡，集群内就算同网络也无法通讯。
@@ -29,6 +30,7 @@ services:
 
   elasticsearch2:
     container_name: 'es2'
+    hostname: es2
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       - network.publish_host=es2
@@ -52,7 +54,8 @@ services:
           - node.role == worker
 
   elasticsearch3:
-    hostname: elasticsearch3
+    hostname: es3
+    container_name: 'es3'
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       - network.publish_host=elasticsearch3
