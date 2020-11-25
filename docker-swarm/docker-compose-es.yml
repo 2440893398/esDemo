@@ -38,7 +38,7 @@ services:
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - http.port=9200
-      - node.name=node-232
+      - node.name=node-231
       - cluster.name=es-cluster
       - cluster.initial_master_nodes=es1,es2,es3
       - discovery.seed_hosts=es1,es2,es3
@@ -63,7 +63,7 @@ services:
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - http.port=9200
-      - node.name=es3
+      - node.name=node-230
       - cluster.name=es-cluster
       - cluster.initial_master_nodes=es1,es2,es3
       - discovery.seed_hosts=es1,es2,es3
