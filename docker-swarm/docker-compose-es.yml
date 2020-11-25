@@ -14,7 +14,7 @@ services:
       - http.port=9200
       - node.name=es1
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=es1,es2,es3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
@@ -38,7 +38,7 @@ services:
       - http.port=9200
       - node.name=es2
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=es1,es2,e3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
@@ -62,7 +62,7 @@ services:
       - http.port=9200
       - node.name=es3
       - cluster.name=es-cluster
-      - cluster.initial_master_nodeses1,es2,e3
+      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
