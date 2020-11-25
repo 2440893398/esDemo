@@ -1,22 +1,22 @@
 version: '3'
 services:
   elasticsearch1:
-    hostname: elasticsearch1
+    container_name: 'es1'
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       # publish_host 如果不写成hostname，会用错网卡，集群内就算同网络也无法通讯。
       # ping是可以ping通，但es监听的网卡是错的。
       # 或者可以先创建network,写死IP，使用macvlan网络
-      - network.publish_host=elasticsearch1
+      - network.publish_host=es1
       - network.host=0.0.0.0
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - http.port=9200
-      - node.name=es1
+      - node.name=node-232
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
-      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - cluster.initial_master_nodes=es1,es2,es3
+      - discovery.seed_hosts=es1,es2,es3
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
       - 9200:9200
     networks:
@@ -28,19 +28,19 @@ services:
           - node.role == worker
 
   elasticsearch2:
-    hostname: elasticsearch2
+    container_name: 'es2'
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
-      - network.publish_host=elasticsearch2
+      - network.publish_host=es2
       - network.host=0.0.0.0
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - http.port=9200
-      - node.name=es2
+      - node.name=node-232
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
-      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - cluster.initial_master_nodes=es1,es2,es3
+      - discovery.seed_hosts=es1,es2,es3
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
       - 9201:9200
     networks:
@@ -62,9 +62,9 @@ services:
       - http.port=9200
       - node.name=es3
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=elasticsearch1,elasticsearch2,elasticsearch3
-      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - cluster.initial_master_nodes=es1,es2,es3
+      - discovery.seed_hosts=es1,es2,es3
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
       - 9203:9200
     networks:
