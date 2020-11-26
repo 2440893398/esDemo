@@ -22,11 +22,9 @@ services:
       - elk
     deploy:
       replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
+      
 
-  e2:
+  es2:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       - network.publish_host=es2
