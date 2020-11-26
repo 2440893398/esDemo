@@ -38,7 +38,7 @@ services:
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
-      - 9200:9200
+      - 9201:9200
     networks:
       - elk
     deploy:
@@ -61,7 +61,7 @@ services:
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
-      - 9200:9200
+      - 9202:9200
     networks:
       - elk
     deploy:
