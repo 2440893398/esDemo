@@ -1,8 +1,6 @@
 version: '3'
 services:
-  elasticsearch1:
-    container_name: 'es1'
-    hostname: es1
+  es1:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       # publish_host 如果不写成hostname，会用错网卡，集群内就算同网络也无法通讯。
@@ -28,9 +26,7 @@ services:
         constraints:
           - node.role == worker
 
-  elasticsearch2:
-    container_name: 'es2'
-    hostname: es2
+  e2:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       - network.publish_host=es2
@@ -44,7 +40,7 @@ services:
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
-      - 9201:9200
+      - 9200:9200
     networks:
       - elk
     deploy:
@@ -53,9 +49,7 @@ services:
         constraints:
           - node.role == worker
 
-  elasticsearch3:
-    hostname: es3
-    container_name: 'es3'
+  es3:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
       - network.publish_host=elasticsearch3
@@ -69,7 +63,7 @@ services:
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
-      - 9203:9200
+      - 9200:9200
     networks:
       - elk
     deploy:
@@ -83,9 +77,9 @@ services:
     volumes:
       - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
-      - elasticsearch1
-      - elasticsearch2
-      - elasticsearch3
+      - es1
+      - es2
+      - es3
     networks:
       - elk
     ports:
@@ -106,9 +100,9 @@ services:
     volumes:
       - /opt/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
     depends_on:
-      - elasticsearch1
-      - elasticsearch2
-      - elasticsearch3
+      - es1
+      - es2
+      - es3
     deploy:
       replicas: 1
       placement:
