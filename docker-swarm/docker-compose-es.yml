@@ -98,7 +98,7 @@ services:
     networks:
       - elk
     volumes:
-      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     depends_on:
       - elasticsearch1
       - elasticsearch2
