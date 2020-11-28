@@ -16,7 +16,7 @@ services:
       - cluster.name=es-cluster
       - cluster.initial_master_nodes=es1,es2,es3
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-      - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
       - 9200:9200
     networks:
@@ -39,7 +39,7 @@ services:
         - cluster.name=es-cluster
         - cluster.initial_master_nodes=es1,es2,e3
         - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-        - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
+        - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
       ports:
         - 9201:9200
       networks:
@@ -62,7 +62,7 @@ services:
         - cluster.name=es-cluster
         - cluster.initial_master_nodeses1,es2,e3
         - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-        - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
+        - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
       ports:
         - 9203:9200
       networks:
