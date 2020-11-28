@@ -5,7 +5,7 @@ services:
     container_name: filebeat
     restart: always
     volumes:
-#     - ./filbeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+     - ./filbeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
     # needed to access all docker logs (read only) :
      - /var/lib/docker/containers/:/var/lib/docker/containers/
     # needed to access additional informations about containers
