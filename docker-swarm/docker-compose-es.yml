@@ -78,7 +78,6 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
-
     depends_on:
       - elasticsearch1
       - elasticsearch2
