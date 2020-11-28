@@ -64,7 +64,7 @@ services:
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
-      - 9203:9200
+      - 9202:9200
     networks:
       - elk
     deploy:
