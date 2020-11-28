@@ -76,7 +76,14 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:7.9.0
     volumes:
-      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - type: bind
+        source: ./logstash/config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./logstash/pipeline
+        target: /usr/share/logstash/pipeline
+        read_only: true
     depends_on:
       - elasticsearch1
       - elasticsearch2
@@ -98,7 +105,10 @@ services:
     networks:
       - elk
     volumes:
-      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - type: bind
+        source: ./kibana/config/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
     depends_on:
       - elasticsearch1
       - elasticsearch2

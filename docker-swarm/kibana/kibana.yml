@@ -8,3 +8,7 @@ xpack.monitoring.ui.container.elasticsearch.enabled: true
 elasticsearch.requestTimeout: 70000
 
 i18n.locale: "zh-CN"
+
+## X-Pack security credentials
+#
+elasticsearch.username: elastic
