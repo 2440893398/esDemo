@@ -96,7 +96,7 @@ services:
     networks:
       - elk
     volumes:
-      - /opt/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+      -  ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
     depends_on:
       - es1
       - es2
