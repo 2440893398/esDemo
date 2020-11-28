@@ -10,6 +10,6 @@ services:
       target: /usr/share/filebeat/filebeat.yml
       read_only: true
     # needed to access all docker logs (read only) :
-     - /var/lib/docker/containers/:/var/lib/docker/containers/
+    - /var/lib/docker/containers/:/var/lib/docker/containers/
     # needed to access additional informations about containers
-     - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
