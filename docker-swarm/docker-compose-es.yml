@@ -85,7 +85,10 @@ services:
     networks:
       - elk
     ports:
-      - 4560:4560
+     - 5044:5044
+     - 5000:5000/tcp
+     - 5000:5000/udp
+     - 9600:9600
     deploy:
       replicas: 1
 #      placement:
