@@ -50,7 +50,7 @@ services:
   es3:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
     environment:
-      - network.publish_host=elasticsearch3
+      - network.publish_host=es3
       - network.host=0.0.0.0
       - http.cors.enabled=true
       - http.cors.allow-origin=*
