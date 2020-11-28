@@ -38,7 +38,7 @@ processors:
       fields: ["docker","metadata","beat","input","prospector","host","source","offset"]
 # 日志输出
 output.logstash: # 输出地址
-  hosts: ["192.168.30.42:5043"]
+  hosts: ["192.168.0.12:4560"]
 #output.elasticsearch:
 #  hosts: ["192.168.30.42:9200"]
 #  protocol: "http"
