@@ -16,62 +16,62 @@ services:
       - cluster.name=es-cluster
       - cluster.initial_master_nodes=es1,es2,es3
       - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
+      - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
     ports:
       - 9200:9200
     networks:
       - elk
     deploy:
       replicas: 1
-#      placement:
-#        constraints:
-#          - node.role == worker
-    elasticsearch2:
-      hostname: elasticsearch2
-      image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
-      environment:
-        - network.publish_host=elasticsearch2
-        - network.host=0.0.0.0
-        - http.cors.enabled=true
-        - http.cors.allow-origin=*
-        - http.port=9200
-        - node.name=es2
-        - cluster.name=es-cluster
-        - cluster.initial_master_nodes=es1,es2,e3
-        - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-        - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
-      ports:
-        - 9201:9200
-      networks:
-        - elk
-      deploy:
-        replicas: 1
-#        placement:
-#          constraints:
-#            - node.role == worker
-    elasticsearch3:
-      hostname: elasticsearch3
-      image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
-      environment:
-        - network.publish_host=elasticsearch3
-        - network.host=0.0.0.0
-        - http.cors.enabled=true
-        - http.cors.allow-origin=*
-        - http.port=9200
-        - node.name=es3
-        - cluster.name=es-cluster
-        - cluster.initial_master_nodeses1,es2,e3
-        - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
-        - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
-      ports:
-        - 9203:9200
-      networks:
-        - elk
-      deploy:
-        replicas: 1
-#        placement:
-#          constraints:
-#            - node.role == worker
+      placement:
+        constraints:
+          - node.role == worker
+  elasticsearch2:
+    hostname: elasticsearch2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    environment:
+      - network.publish_host=elasticsearch2
+      - network.host=0.0.0.0
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.port=9200
+      - node.name=es2
+      - cluster.name=es-cluster
+      - cluster.initial_master_nodes=es1,es2,e3
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
+      - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
+    ports:
+      - 9201:9200
+    networks:
+      - elk
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+  elasticsearch3:
+    hostname: elasticsearch3
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    environment:
+      - network.publish_host=elasticsearch3
+      - network.host=0.0.0.0
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.port=9200
+      - node.name=es3
+      - cluster.name=es-cluster
+      - cluster.initial_master_nodeses1,es2,e3
+      - discovery.seed_hosts=elasticsearch1,elasticsearch2,elasticsearch3
+      - ES_JAVA_OPTS=-Xms2048m -Xmx2048m
+    ports:
+      - 9203:9200
+    networks:
+      - elk
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
 
 #  logstash:
 #    image: docker.elastic.co/logstash/logstash:7.9.0
