@@ -76,14 +76,9 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:7.9.0
     volumes:
-      - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
-        read_only: true
-      - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
-        read_only: true
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+
     depends_on:
       - elasticsearch1
       - elasticsearch2
