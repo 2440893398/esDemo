@@ -73,42 +73,42 @@ services:
         constraints:
           - node.role == worker
 
-#  logstash:
-#    image: docker.elastic.co/logstash/logstash:7.9.0
-#    volumes:
-#      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-#    depends_on:
-#      - es1
-#      - es2
-#      - es3
-#    networks:
-#      - elk
-#    ports:
-#      - 4560:4560
-#    deploy:
-#      replicas: 1
-##      placement:
-##        constraints:
-##          - node.hostname == node1
-#
-#
-#  kibana:
-#    image: docker.elastic.co/kibana/kibana:7.9.0
-#    ports:
-#      - 5601:5601
-#    networks:
-#      - elk
-#    volumes:
-#      -  ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
-#    depends_on:
-#      - es1
-#      - es2
-#      - es3
-#    deploy:
-#      replicas: 1
-##      placement:
-##        constraints:
-##          - node.hostname == node1
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.9.0
+    volumes:
+      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    depends_on:
+      - es1
+      - es2
+      - es3
+    networks:
+      - elk
+    ports:
+      - 4560:4560
+    deploy:
+      replicas: 1
+#      placement:
+#        constraints:
+#          - node.hostname == node1
+
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.0
+    ports:
+      - 5601:5601
+    networks:
+      - elk
+    volumes:
+      -  ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+    depends_on:
+      - es1
+      - es2
+      - es3
+    deploy:
+      replicas: 1
+#      placement:
+#        constraints:
+#          - node.hostname == node1
 
 networks:
   elk:
