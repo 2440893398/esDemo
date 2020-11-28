@@ -13,7 +13,7 @@ services:
       - http.port=9200
       - node.name=node-232
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=es1,es2,es3
+      - cluster.initial_master_nodes=es1
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
@@ -34,7 +34,7 @@ services:
       - http.port=9200
       - node.name=node-231
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=es1,es2,es3
+      - cluster.initial_master_nodes=es1
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
@@ -57,7 +57,7 @@ services:
       - http.port=9200
       - node.name=node-230
       - cluster.name=es-cluster
-      - cluster.initial_master_nodes=es1,es2,es3
+      - cluster.initial_master_nodes=es1
       - discovery.seed_hosts=es1,es2,es3
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -Duser.timezone=GMT+08"
     ports:
