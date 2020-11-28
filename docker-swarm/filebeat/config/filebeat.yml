@@ -1,0 +1,49 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
+    # json解码
+    json.add_error_key: true
+    json.overwrite_keys: true
+    json.message_key: log
+    # 多行合并
+    #  multiline:
+    #    pattern: ^\d{4}
+    #    negate: true
+    #    match: after
+    #
+    # 排除或删除通配符行
+    #  exclude_lines: ['^DBG']
+    #  include_lines: ['ERROR', 'WARN', 'INFO']
+    # 排除通配文件
+    #  exclude_files: ['\.gz$']
+    #
+    # 添加docker元数据
+    processors:
+      - add_docker_metadata:
+          match_source: true
+          # 选取添加docker元数据的层级
+          match_source_index: 4
+# 处理器重命名和删除无用字段
+processors:
+  - rename:
+      fields:
+        - from: "json.log"
+          to: "message"
+        - from: "docker.container.name"
+          to: "containername"
+        - from: "log.file.path"
+          to: "filepath"
+  - drop_fields:
+      fields: ["docker","metadata","beat","input","prospector","host","source","offset"]
+# 日志输出
+output.logstash: # 输出地址
+  hosts: ["192.168.30.42:5043"]
+#output.elasticsearch:
+#  hosts: ["192.168.30.42:9200"]
+#  protocol: "http"
+#output.file:
+#  path: "/tmp"
+#  filename: filebeat.out
+#output.console:
+#  pretty: true

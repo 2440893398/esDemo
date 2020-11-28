@@ -12,3 +12,13 @@ i18n.locale: "zh-CN"
 ## X-Pack security credentials
 #
 elasticsearch.username: elastic
+
+timelion.enabled: false
+console.enabled: false
+xpack.grokdebugger.enabled: false
+xpack.searchprofiler.enabled: false
+xpack.canvas.enabled: false
+xpack.ml.enabled: false
+xpack.infra.enabled: false
+xpack.apm.enabled: false
+xpack.graph.enabled: false
