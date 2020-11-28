@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - type: bind
-        source: ./filbeat/config/filebeat.yml
+        source: ./filebeat/config/filebeat.yml
         target: /usr/share/filebeat/filebeat.yml
         read_only: true
       - type: bind
