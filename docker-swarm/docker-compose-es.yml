@@ -78,9 +78,9 @@ services:
     volumes:
       - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
-      - es1
-      - es2
-      - es3
+      - elasticsearch1
+      - elasticsearch2
+      - elasticsearch3
     networks:
       - elk
     ports:
@@ -91,7 +91,6 @@ services:
 #        constraints:
 #          - node.hostname == node1
 
-
   kibana:
     image: docker.elastic.co/kibana/kibana:7.9.0
     ports:
@@ -99,11 +98,11 @@ services:
     networks:
       - elk
     volumes:
-      -  ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
     depends_on:
-      - es1
-      - es2
-      - es3
+      - elasticsearch1
+      - elasticsearch2
+      - elasticsearch3
     deploy:
       replicas: 1
 #      placement:
