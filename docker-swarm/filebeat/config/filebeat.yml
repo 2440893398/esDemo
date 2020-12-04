@@ -1,11 +1,15 @@
 filebeat.inputs:
   - type: log
+    # Change to true to enable this input configuration.
+    enabled: true
     paths:
       - '/var/lib/docker/containers/*/*.log'
     # json解码
     json.add_error_key: true
     json.overwrite_keys: true
     json.message_key: log
+    encoding: utf-8
+    input_type: log
     # 多行合并
     #  multiline:
     #    pattern: ^\d{4}
